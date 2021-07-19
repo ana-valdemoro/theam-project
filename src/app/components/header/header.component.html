@@ -1,0 +1,45 @@
+<div class="header">
+    <h2 id="title">Magic Childhood</h2>
+    <nav class="navbar">
+        <ul class="navbar-menu">
+            <li class="navbar-menu-item" (mouseover)="toggleDropMenu()" (mouseout)="toggleDropMenu()">            
+                <a >
+                    <li>Primera puesta</li>
+                    <p>0 a 16 meses</p>
+                </a>
+                <ul class="dropdown-menu" [ngClass]="calculateClass()" >
+                    <a><li class="dropdown-menu-item">Prendas Abrigos</li></a>
+                    <a><li class="dropdown-menu-item">Abrigos</li></a>
+                    <a><li class="dropdown-menu-item">Patucos</li></a>
+                    <a><li class="dropdown-menu-item">Jerseys y chaquetas</li></a>
+                    <a><li class="dropdown-menu-item">Camisas</li></a>
+                    <a><li class="dropdown-menu-item">Vestidos</li></a>
+                    <a><li class="dropdown-menu-item">Prendas Abrigos</li></a>
+                    <a><li class="dropdown-menu-item">Eopa interior</li></a>
+                    <a><li class="dropdown-menu-item">Patucos</li></a>
+                    <a><li class="dropdown-menu-item">Lazos</li></a>
+                    <a><li class="dropdown-menu-item">Camisas</li></a>
+                    <a><li class="dropdown-menu-item">Patucos y ranitas</li></a>
+                </ul>
+            </li>
+            <li class="navbar-menu-item">
+                <a >
+                    <li>Bebé</li>
+                    <p>0 a 36 meses</p>
+                </a>
+            </li>
+            <li class="navbar-menu-item">
+                <a >
+                    <li>Infantil</li>
+                    <p>2 a 12 años</p>
+                </a>
+            </li>
+            <li>
+                <a>
+                    <li>Junior</li>
+                    <p>12 a 16 años</p>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>

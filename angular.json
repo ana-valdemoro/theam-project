@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "theam-project"
+    }
+  },
+  "defaultProject": "theam-project",
+  "cli": {
+    "analytics": false
+  }
 }
