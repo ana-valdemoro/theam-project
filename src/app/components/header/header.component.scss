@@ -1,6 +1,7 @@
 .header{
     //layout
     display: flex;
+    justify-content: space-around;
     //border 
     border-bottom: 1px solid rgba(245,77,40,.3);
     border-bottom-width: 2px;
@@ -16,7 +17,6 @@
             //layout
             display: flex;
             .navbar-menu-item{
-                // width: 120px;
                 //Spacing
                 margin-right: 30px;
             }
@@ -58,6 +58,19 @@
                 background-color:white;
             
             }
+        }
+    }
+    .store-location{
+        //layout
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .fa-map-marker-alt{
+            font-size: 30px;
+            text-align: center;
+            //Spacing
+            margin-bottom: 6px;
         }
     }
 }
