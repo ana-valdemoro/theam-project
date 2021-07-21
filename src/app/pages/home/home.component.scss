@@ -1,0 +1,32 @@
+.main-page{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: auto;
+}
+.categories-banner{
+    //Layout
+    display: flex;
+    width: 60%;
+
+    .category{
+        //layout
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 50%;
+        background-color: #F54D28;
+        img{
+            object-fit: cover;
+            width: 100%;
+            height: auto;
+            max-height: 530px;
+        }
+        h4{
+            color: white;
+            
+        }
+       
+    }
+    
+}
