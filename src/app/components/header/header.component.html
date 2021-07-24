@@ -3,7 +3,7 @@
     <nav class="navbar">
         <ul class="navbar-menu">
             <li class="navbar-menu-item" (mouseover)="toggleDropMenu()" (mouseout)="toggleDropMenu()">            
-                <a >
+                <a [routerLink]="['/primera-puesta']" >
                     <li>Primera puesta</li>
                     <p>0 a 16 meses</p>
                 </a>
@@ -23,19 +23,19 @@
                 </ul>
             </li>
             <li class="navbar-menu-item">
-                <a >
+                <a [routerLink]="['/bebe']" >
                     <li>Bebé</li>
                     <p>0 a 36 meses</p>
                 </a>
             </li>
             <li class="navbar-menu-item">
-                <a >
+                <a [routerLink]="['/infantil']">
                     <li>Infantil</li>
                     <p>2 a 12 años</p>
                 </a>
             </li>
             <li>
-                <a>
+                <a [routerLink]="['/junior']">
                     <li>Junior</li>
                     <p>12 a 16 años</p>
                 </a>
