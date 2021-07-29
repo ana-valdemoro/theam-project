@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CategoriesProvider } from '../../providers/categories.provider';
 
 @Component({
   selector: 'app-header',
@@ -7,14 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   showDropdown:boolean = false;
-  constructor() { }
+  constructor(private categoriesProvider: CategoriesProvider) { }
 
   ngOnInit(): void {
+    this.categoriesProvider.getCategoriesList();
   }
   toggleDropMenu(){
     this.showDropdown = !this.showDropdown;
   }
-  calculateClass(){
+  onShowDropdownMenu(){
     return this.showDropdown ? "show" : "";
   }
 
