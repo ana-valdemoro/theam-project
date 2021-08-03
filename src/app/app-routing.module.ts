@@ -5,6 +5,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { BabyComponent } from './pages/baby/baby.component';
 import { ChildrenComponent } from './pages/children/children.component';
 import { JuniorComponent } from './pages/junior/junior.component';
+import { ErrorComponent } from './components/error/error.component';
 
 
 const routes: Routes = [
@@ -13,7 +14,8 @@ const routes: Routes = [
   {path: "primera-puesta", component:NewBornComponent},
   {path: "bebe", component: BabyComponent},
   {path: "infantil", component: ChildrenComponent},
-  {path:"junior", component: JuniorComponent}
+  {path:"junior", component: JuniorComponent},
+  {path:"**",   component: ErrorComponent}
 ];
 
 @NgModule({

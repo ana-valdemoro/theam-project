@@ -9,6 +9,7 @@ import { BabyComponent } from './pages/baby/baby.component';
 import { NewBornComponent } from './pages/new-born/new-born.component';
 import { ChildrenComponent } from './pages/children/children.component';
 import { JuniorComponent } from './pages/junior/junior.component';
+import { ErrorComponent } from './components/error/error.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { JuniorComponent } from './pages/junior/junior.component';
     BabyComponent,
     NewBornComponent,
     ChildrenComponent,
-    JuniorComponent
+    JuniorComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
