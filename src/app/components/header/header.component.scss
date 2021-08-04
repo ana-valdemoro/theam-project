@@ -50,7 +50,9 @@
             //Spacing
             padding: 0px;
             &.show{
-                display: block;
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                padding-bottom: 10px;
             }
             .dropdown-menu-item{
                 //Size
@@ -58,6 +60,13 @@
                 //Spacing
                 padding: 1em;
                 background-color:white;
+                a{
+                    padding: 0.4em ;
+                }
+                a:hover{
+                    border-bottom: 1px solid rgba(245, 77, 40, 0.9);
+                }
+                
             
             }
         }
