@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Category } from 'src/app/models/category';
 import { CategoriesProvider } from '../../providers/categories.provider';
+import { categoryRoutes } from 'src/app/models/category';
 
 @Component({
   selector: 'app-header',
@@ -7,11 +9,18 @@ import { CategoriesProvider } from '../../providers/categories.provider';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  showDropdown:boolean = false;
+  categories: Category[]; 
   constructor(private categoriesProvider: CategoriesProvider) { }
 
   ngOnInit(): void {
-    this.categoriesProvider.getCategoriesList();
+    this.categoriesProvider.getCategoriesList().subscribe(values  =>{
+      
+      this.categories = values.map(category =>{;
+        category.route = this.elaboratePath(category.name);
+        return category;
+      })
+    });
+  }
   }
   toggleDropMenu(){
     this.showDropdown = !this.showDropdown;
