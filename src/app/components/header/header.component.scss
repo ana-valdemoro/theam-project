@@ -1,14 +1,14 @@
 .header{
     //layout
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     //border 
     border-bottom: 1px solid rgba(245,77,40,.3);
     border-bottom-width: 2px;
     border-bottom-style: solid;
     border-bottom-color: rgba(245, 77, 40, 0.9);
     #title{
-        margin: 19px 19px  8px 0px;
+        margin: 19px 19px  8px 19px;
         font-size: 24px;
 
     }
@@ -18,6 +18,7 @@
         .navbar-menu{
             //layout
             display: flex;
+            padding: 0;
             .navbar-menu-item{
                 //Spacing
                 margin-right: 30px;
@@ -42,32 +43,41 @@
             .menu-item-selected{
                 border-bottom: 2px solid #f52fcf;
             }
+            a:hover{
+                border-bottom: 1px solid rgba(245, 77, 40, 0.9);
+            }
         }
+        .dropdown-container{
+            //Location
+            position:absolute;
+            top:58px;
+            left: 0px;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+        }
+
         .dropdown-menu{
             //Layout
-            display: none;
-            position:absolute;
-            //Spacing
-            padding: 0px;
-            &.show{
-                display: grid;
-                grid-template-columns: repeat(4, 1fr);
-                padding-bottom: 10px;
-            }
+            display: grid;
+            grid-template-columns: repeat(4 , auto);
+            justify-self: center;
+            //Size
+            width: 677px;
+            //Background
+            background-color: white;
+            padding: 0;
+    
             .dropdown-menu-item{
                 //Size
                 font-size: 14px;
                 //Spacing
-                padding: 1em;
+                padding: 0.8em 0.5em;
                 background-color:white;
-                a{
-                    padding: 0.4em ;
-                }
                 a:hover{
                     border-bottom: 1px solid rgba(245, 77, 40, 0.9);
                 }
-                
-            
+                    
             }
         }
     }
@@ -76,7 +86,8 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-
+        //Spacing
+        margin-right: 11px;
         .fa-map-marker-alt{
             font-size: 30px;
             text-align: center;

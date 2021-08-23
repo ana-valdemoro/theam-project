@@ -9,6 +9,7 @@ import { categoryRoutes } from 'src/app/models/category';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  currentCategory: Category | undefined;
   categories: Category[]; 
   constructor(private categoriesProvider: CategoriesProvider) { }
 
@@ -21,12 +22,23 @@ export class HeaderComponent implements OnInit {
       })
     });
   }
+
+  showSubCategories(index:number): void {
+    this.currentCategory = this.categories[index];
   }
-  toggleDropMenu(){
-    this.showDropdown = !this.showDropdown;
+
+  categoryMouseOut() {
+    this.currentCategory = undefined;
   }
-  onShowDropdownMenu(){
-    return this.showDropdown ? "show" : "";
+  private elaboratePath(labelCategory:string){
+    let category = categoryRoutes.filter(category =>{
+      if(labelCategory  == category.name || (category.name).includes(labelCategory)) return category
+    });
+    return '/'+ category[0].path;
+  }
+
+  private elaborateComponent(){
+
   }
 
 }

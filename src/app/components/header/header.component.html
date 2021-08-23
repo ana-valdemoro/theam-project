@@ -1,57 +1,15 @@
 <div class="header">
     <a id="title" [routerLink]="['/home']">Magic Childhood</a>
     <nav class="navbar">
-        <ul class="navbar-menu">
-            <li class="navbar-menu-item" (mouseover)="toggleDropMenu()" (mouseout)="toggleDropMenu()">            
-                <a [routerLink]="['/primera-puesta']" >
-                    <li>Primera puesta</li>
-                    <p>0 a 16 meses</p>
-                </a>
-                <ul class="dropdown-menu show" [ngClass]="onShowDropdownMenu()" >
-                    <li class="dropdown-menu-item"><a> Abrigos</a></li>
-                    <li class="dropdown-menu-item"><a>Patucos</a></li>
-                    <li class="dropdown-menu-item"><a>Jerseys y chawuetas</a></li>
-                    <li class="dropdown-menu-item"><a>Camisas</a></li>
-                    <li class="dropdown-menu-item"><a>Vestidos</a></li>
-                    <li class="dropdown-menu-item"><a>Prendas Abrigos</a></li>
-                    <li class="dropdown-menu-item"><a>Prendas Abrigos</a></li>
-                    <li class="dropdown-menu-item"><a>Ropa interior</a></li>
-                    <li class="dropdown-menu-item"><a>Patucos</a></li>
-                    <li class="dropdown-menu-item"><a>Lazos</a></li>
-                    <li class="dropdown-menu-item"><a>Prendas </a></li>
-                    <li class="dropdown-menu-item"><a>Patucos y ranitas</a></li>
-
-                    <!-- <a><li class="dropdown-menu-item">Abrigos</li></a>
-                    <a><li class="dropdown-menu-item">Patucos</li></a>
-                    <a><li class="dropdown-menu-item">Jerseys y chaquetas</li></a>
-                    <a><li class="dropdown-menu-item">Camisas</li></a>
-                    <a><li class="dropdown-menu-item">Vestidos</li></a>
-                    <a><li class="dropdown-menu-item">Prendas Abrigos</li></a>
-                    <a><li class="dropdown-menu-item">Eopa interior</li></a>
-                    <a><li class="dropdown-menu-item">Patucos</li></a>
-                    <a><li class="dropdown-menu-item">Lazos</li></a>
-                    <a><li class="dropdown-menu-item">Camisas</li></a>
-                    <a><li class="dropdown-menu-item">Patucos y ranitas</li></a> -->
+        <ul class="navbar-menu" >
+            <li *ngFor="let category of categories, let i = index" class="navbar-menu-item" (mouseover)="showSubCategories(i)"   >
+                <a [routerLink]="[category.route]">{{category.name}}</a>
+            </li>
+            <div *ngIf="currentCategory" class="dropdown-container" >
+                <ul class="dropdown-menu" (mouseleave)="categoryMouseOut()">
+                    <li *ngFor="let subCategory of currentCategory.children" class="dropdown-menu-item"><a [routerLink]="['?¿']">{{subCategory.name}}</a></li>
                 </ul>
-            </li>
-            <li class="navbar-menu-item">
-                <a [routerLink]="['/bebe']" >
-                    <li>Bebé</li>
-                    <p>0 a 36 meses</p>
-                </a>
-            </li>
-            <li class="navbar-menu-item">
-                <a [routerLink]="['/infantil']">
-                    <li>Infantil</li>
-                    <p>2 a 12 años</p>
-                </a>
-            </li>
-            <li>
-                <a [routerLink]="['/junior']">
-                    <li>Junior</li>
-                    <p>12 a 16 años</p>
-                </a>
-            </li>
+            </div>
         </ul>
     </nav>
     <div class="store-location">
