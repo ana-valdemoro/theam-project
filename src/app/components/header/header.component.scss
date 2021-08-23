@@ -43,7 +43,7 @@
             .menu-item-selected{
                 border-bottom: 2px solid #f52fcf;
             }
-            a:hover{
+            a:hover, a:focus{
                 border-bottom: 1px solid rgba(245, 77, 40, 0.9);
             }
         }
@@ -74,7 +74,7 @@
                 //Spacing
                 padding: 0.8em 0.5em;
                 background-color:white;
-                a:hover{
+                a:hover, a:focus{
                     border-bottom: 1px solid rgba(245, 77, 40, 0.9);
                 }
                     

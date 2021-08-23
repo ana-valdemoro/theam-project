@@ -3,10 +3,10 @@
     <nav class="navbar">
         <ul class="navbar-menu" >
             <li *ngFor="let category of categories, let i = index" class="navbar-menu-item" (mouseover)="showSubCategories(i)"   >
-                <a [routerLink]="[category.route]">{{category.name}}</a>
+                <a [routerLink]="[category.route]" (mouseenter)="navHover = true" (mouseleave)="checkDropdownVisibility()">{{category.name}}</a>
             </li>
             <div *ngIf="currentCategory" class="dropdown-container" >
-                <ul class="dropdown-menu" (mouseleave)="categoryMouseOut()">
+                <ul class="dropdown-menu"(mouseenter)="menuHover = true" (mouseleave)="categoryMouseOut()">
                     <li *ngFor="let subCategory of currentCategory.children" class="dropdown-menu-item"><a [routerLink]="['?¿']">{{subCategory.name}}</a></li>
                 </ul>
             </div>

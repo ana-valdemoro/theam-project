@@ -11,6 +11,8 @@ import { categoryRoutes } from 'src/app/models/category';
 export class HeaderComponent implements OnInit {
   currentCategory: Category | undefined;
   categories: Category[]; 
+  navHover:boolean = false;
+  menuHover:boolean = false;
   constructor(private categoriesProvider: CategoriesProvider) { }
 
   ngOnInit(): void {
@@ -22,13 +24,19 @@ export class HeaderComponent implements OnInit {
       })
     });
   }
-
+  checkDropdownVisibility(){
+    if(this.menuHover == false){
+      this.currentCategory = undefined
+    }
+    this.navHover = false;
+  }
   showSubCategories(index:number): void {
     this.currentCategory = this.categories[index];
   }
 
   categoryMouseOut() {
-    this.currentCategory = undefined;
+    if(this.navHover == false) this.currentCategory = undefined;
+    this.menuHover = false;
   }
   private elaboratePath(labelCategory:string){
     let category = categoryRoutes.filter(category =>{
