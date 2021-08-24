@@ -10,6 +10,7 @@ import { NewBornComponent } from './pages/new-born/new-born.component';
 import { ChildrenComponent } from './pages/children/children.component';
 import { JuniorComponent } from './pages/junior/junior.component';
 import { ErrorComponent } from './components/error/error.component';
+import { CategoryComponent } from './pages/category/category.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ErrorComponent } from './components/error/error.component';
     NewBornComponent,
     ChildrenComponent,
     JuniorComponent,
-    ErrorComponent
+    ErrorComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,
