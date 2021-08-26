@@ -1,6 +1,5 @@
 import { CategoryComponent } from "../pages/category/category.component";
 
-
 export class Category {
     name: string;
     categoryId: string;
@@ -12,6 +11,8 @@ export class Category {
 export const categoryRoutes = [
     {name: 'Primera puesta', path: "primera-puesta", component: CategoryComponent},
     {name: 'Bebé', path: "bebe", component: CategoryComponent},
-    {name: 'Niño-Niña', path: "infantil", component: CategoryComponent},
-    {name: "Junior Niño-Junior Niña",path:"junior", component: CategoryComponent}
+    {name: 'Niño', path: "nino", component: CategoryComponent},
+    {name: 'Niña', path: "nina", component: CategoryComponent},
+    {name: "Junior Niño",path:"junior-nino", component: CategoryComponent},
+    {name: "Junior Niña",path:"junior-nina", component: CategoryComponent}
 ];
