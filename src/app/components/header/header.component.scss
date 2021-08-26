@@ -43,7 +43,7 @@
             .menu-item-selected{
                 border-bottom: 2px solid #f52fcf;
             }
-            a:hover, a:focus{
+            .active-route, a:hover, a:focus{
                 border-bottom: 1px solid rgba(245, 77, 40, 0.9);
             }
         }
