@@ -1,1 +1,4 @@
 <p>category works!</p>
+<div *ngIf="categoryProducts">
+    <p *ngFor="let product of categoryProducts.results">{{product.name}}</p>
+</div>
