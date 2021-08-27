@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Category } from 'src/app/models/category';
 import { CategoriesProvider } from '../../providers/categories.provider';
 import { categoryRoutes } from 'src/app/models/category';
+import { NavbarState } from '../../State/navbarCategory.state';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +14,7 @@ export class HeaderComponent implements OnInit {
   categories: Category[]; 
   navHover:boolean = false;
   menuHover:boolean = false;
-  constructor(private categoriesProvider: CategoriesProvider) { }
+  constructor(private categoriesProvider: CategoriesProvider, private navbarCategoryState: NavbarState) {}
 
   ngOnInit(): void {
     this.categoriesProvider.getCategoriesList().subscribe(values  =>{
@@ -45,8 +46,8 @@ export class HeaderComponent implements OnInit {
     return '/'+ category[0].path;
   }
 
-  private elaborateComponent(){
-
+  saveNavbarState(category: Category| null){
+    this.navbarCategoryState.setCategory(category);
   }
 
 }
