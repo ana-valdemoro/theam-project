@@ -21,4 +21,14 @@ export class Size{
     name: string;
     stockQty : string;
 }
-
+export class Filter{
+    filterName: string;
+    label: string;
+    options: any[];
+    type:string;
+}
+export class CategoryProducts{
+    results: Product[];
+    filters: Filter[];
+    resultCount: number;
+}
