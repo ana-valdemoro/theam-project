@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Category } from 'src/app/models/category';
 import { CategoriesProvider } from '../../providers/categories.provider';
 import { categoryRoutes } from 'src/app/models/category';
@@ -14,16 +14,18 @@ export class HeaderComponent implements OnInit {
   categories: Category[]; 
   navHover:boolean = false;
   menuHover:boolean = false;
+  isMobileSize:boolean = false;
+  isOpenMobileBar:boolean = false;
   constructor(private categoriesProvider: CategoriesProvider, private navbarCategoryState: NavbarState) {}
 
   ngOnInit(): void {
     this.categoriesProvider.getCategoriesList().subscribe(values  =>{
-      
       this.categories = values.map(category =>{;
         category.route = this.elaboratePath(category.name);
         return category;
       })
     });
+    this.checkMobileScreen();
   }
   checkDropdownVisibility(){
     if(this.menuHover == false){
@@ -48,6 +50,15 @@ export class HeaderComponent implements OnInit {
 
   saveNavbarState(category: Category| null){
     this.navbarCategoryState.setCategory(category);
+  }
+  
+  @HostListener('window:resize', ['$event'])
+  checkMobileScreen(event?){
+    if(window.innerWidth < 856){
+      this.isMobileSize = true;
+    }else{
+      this.isMobileSize = false;
+    }  
   }
 
 }

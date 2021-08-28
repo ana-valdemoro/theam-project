@@ -7,14 +7,8 @@
     border-bottom-width: 2px;
     border-bottom-style: solid;
     border-bottom-color: rgba(245, 77, 40, 0.9);
-    #title{
-        margin: 19px 19px  8px 19px;
-        font-size: 24px;
 
-    }
     .navbar{
-        //layout
-        display: flex;
         .navbar-menu{
             //layout
             display: flex;
@@ -22,15 +16,15 @@
             .navbar-menu-item{
                 //Spacing
                 margin-right: 30px;
+                a{
+                    color:black;
+                }
             }
             li{
                 //Layout
                 text-align: center;  
                 //Colors
                 color: #6D6F73;
-                //Others
-                list-style: none; 
-                
             }
             p{
                 //Size
@@ -43,9 +37,10 @@
             .menu-item-selected{
                 border-bottom: 2px solid #f52fcf;
             }
-            .active-route, a:hover, a:focus{
-                border-bottom: 1px solid rgba(245, 77, 40, 0.9);
+            .active-route,a:hover, a:focus{
+                border-bottom: 2px solid rgba(245, 77, 40, 0.9);
             }
+
         }
         .dropdown-container{
             //Location
@@ -89,10 +84,66 @@
         //Spacing
         margin-right: 11px;
         .fa-map-marker-alt{
-            font-size: 30px;
+            font-size: 20px;
             text-align: center;
             //Spacing
             margin-bottom: 6px;
         }
     }
+}
+.logo{
+    display: flex;
+    align-items: center;
+
+    #title{
+        margin: 0px 8px;
+        font-size: 24px;
+    }
+}
+.fa-bars{
+    font-size: 20px;
+    margin: 4px;
+    cursor: pointer;
+}
+.fa-times{
+    font-size: 23px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.navbar-mobile-menu{
+    margin: 0;
+    background-color: rgb(245, 103, 71);
+    position: absolute;
+    top: 47px;
+    width: 100%;
+    height: calc(100vh - 47px);
+    transform: translateX(0);
+
+    a{
+        color:white;
+    }
+    li{
+        border-bottom: 1px solid white;
+    }
+}
+.fa-caret-down{
+    color:white;
+}
+@media screen and (max-width: 856px){
+    // .navbar{
+    //     //display: block;
+    //     background-color: yellow;
+    //     position: absolute;
+    //     top: 47px;
+    //     width: 100%;
+    //     height: calc(100vh - 47px);
+
+    // }
+    // .navbar-menu{
+    //     flex-direction: column;
+    //     align-items: center;
+    //     gap: 1rem;
+    // }
+  
 }

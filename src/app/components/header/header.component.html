@@ -1,17 +1,31 @@
 <div class="header">
-    <a id="title" [routerLink]="['/home']" (click)="saveNavbarState(null)">Magic Childhood</a>
-    <nav class="navbar">
+    <div class="logo">
+        <div *ngIf="isMobileSize" class="menu-mobile">
+            <i *ngIf="!isOpenMobileBar"class="fas fa-bars" (click)="isOpenMobileBar = true "></i>
+            <i *ngIf="isOpenMobileBar" class="fas fa-times"  (click)="isOpenMobileBar = false "></i>
+        </div>
+        <a id="title" [routerLink]="['/home']" (click)="saveNavbarState(null)">Magic Childhood</a>
+    </div>
+    <nav *ngIf="!isMobileSize" class="navbar">
         <ul class="navbar-menu" >
             <li *ngFor="let category of categories, let i = index" class="navbar-menu-item" (mouseover)="showSubCategories(i)"   >
                 <a [routerLink]="[category.route]" routerLinkActive="active-route" (mouseenter)="navHover = true" (mouseleave)="checkDropdownVisibility()" (click)="saveNavbarState(category)" >{{category.name}}</a>
             </li>
             <div *ngIf="currentCategory" class="dropdown-container" >
-                <ul class="dropdown-menu"(mouseenter)="menuHover = true" (mouseleave)="categoryMouseOut()">
+                <ul class="dropdown-menu"(mouseenter)="menuHover = true" >
                     <li *ngFor="let subCategory of currentCategory.children" class="dropdown-menu-item"><a [routerLink]="['?¿']">{{subCategory.name}}</a></li>
                 </ul>
             </div>
         </ul>
     </nav>
+    
+        <ul *ngIf="isMobileSize && isOpenMobileBar" class="navbar-mobile-menu" >
+            <li *ngFor="let category of categories">
+                <a>{{category.name}}</a>
+                <i class="fas fa-caret-down"></i>
+            </li>
+        </ul>
+    
     <div class="store-location">
         <i class="fas fa-map-marker-alt"></i>
         <span>España</span>
