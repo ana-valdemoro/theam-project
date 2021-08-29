@@ -11,6 +11,7 @@ import { ChildrenComponent } from './pages/children/children.component';
 import { JuniorComponent } from './pages/junior/junior.component';
 import { ErrorComponent } from './components/error/error.component';
 import { CategoryComponent } from './pages/category/category.component';
+import { MobileNavItemComponent } from './components/mobile-nav-item/mobile-nav-item.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { CategoryComponent } from './pages/category/category.component';
     ChildrenComponent,
     JuniorComponent,
     ErrorComponent,
-    CategoryComponent
+    CategoryComponent,
+    MobileNavItemComponent
   ],
   imports: [
     BrowserModule,

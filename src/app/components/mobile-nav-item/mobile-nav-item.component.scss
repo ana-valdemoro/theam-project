@@ -1,0 +1,36 @@
+.navbar-mobile-menu-item{
+    border-bottom: 1px solid white;
+    display: grid;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto;
+    grid-template-areas: "category menu" "subMenu subMenu";
+
+}
+.fa-caret-down{
+    color:white;
+    font-size: 22px;
+    grid-area: menu;
+    place-self: end;
+    margin: 1em;
+}
+.subMenu-mobile{
+    grid-area: subMenu;
+    background-color: white;
+    padding-top: 26px;
+    padding-left: 16px;
+
+    a{
+        color: black;
+    }
+}
+.category{
+    grid-area: category;
+    margin: 1em;
+    color:white;
+}
+.subMenu-mobile-item{
+    margin-bottom: 26px;
+}

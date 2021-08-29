@@ -1,0 +1,9 @@
+<li class="navbar-mobile-menu-item">
+    <a class="category" (click)=" toggleSubMenuMobile()">{{Category.name}}</a>
+    <i class="fas fa-caret-down" [ngClass]="{'fa-rotate-180': areSubcategoriesShowed}" (click)=" toggleSubMenuMobile()"></i>
+    <ul class="subMenu-mobile"  *ngIf="areSubcategoriesShowed" >
+        <li class="subMenu-mobile-item"*ngFor="let subCategory of Category.children" >
+            <a>{{subCategory.name}}</a>
+        </li>
+    </ul>
+</li>

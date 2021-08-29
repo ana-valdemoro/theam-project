@@ -18,13 +18,9 @@
             </div>
         </ul>
     </nav>
-    
-        <ul *ngIf="isMobileSize && isOpenMobileBar" class="navbar-mobile-menu" >
-            <li *ngFor="let category of categories">
-                <a>{{category.name}}</a>
-                <i class="fas fa-caret-down"></i>
-            </li>
-        </ul>
+            <ul *ngIf="isMobileSize && isOpenMobileBar" class="navbar-mobile-menu" >
+                <app-mobile-nav-item *ngFor="let category of categories" [Category]="category" ></app-mobile-nav-item>
+            </ul>
     
     <div class="store-location">
         <i class="fas fa-map-marker-alt"></i>
