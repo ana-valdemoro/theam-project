@@ -13,7 +13,7 @@
             </li>
             <div *ngIf="currentCategory" class="dropdown-container" (mouseover)="menuHover = true" >
                 <ul class="dropdown-menu" (mouseleave)=" menuHover = false">
-                    <li *ngFor="let subCategory of currentCategory.children" class="dropdown-menu-item"><a [routerLink]="['?¿']">{{subCategory.name}}</a></li>
+                    <li *ngFor="let subCategory of currentCategory.children" class="dropdown-menu-item"><a [routerLink]="[currentCategory.route +'/'+ subCategory.route]">{{subCategory.name}}</a></li>
                 </ul>
             </div>
         </ul>

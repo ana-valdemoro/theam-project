@@ -12,9 +12,19 @@ export const categoryRoutes = [
     {name: 'Primera puesta', path: "primera-puesta", component: CategoryComponent, children: [
        { path: ':subcategory', component: CategoryComponent}
     ]},
-    {name: 'Bebé', path: "bebe", component: CategoryComponent},
-    {name: 'Niño', path: "nino", component: CategoryComponent},
-    {name: 'Niña', path: "nina", component: CategoryComponent},
-    {name: "Junior Niño",path:"junior-nino", component: CategoryComponent},
-    {name: "Junior Niña",path:"junior-nina", component: CategoryComponent}
+    {name: 'Bebé', path: "bebe", component: CategoryComponent, children: [
+        { path: ':subcategory', component: CategoryComponent}
+     ]},
+    {name: 'Niño', path: "nino", component: CategoryComponent, children: [
+        { path: ':subcategory', component: CategoryComponent}
+     ]},
+    {name: 'Niña', path: "nina", component: CategoryComponent, children: [
+        { path: ':subcategory', component: CategoryComponent}
+     ]},
+    {name: "Junior Niño",path:"junior-nino", component: CategoryComponent, children: [
+        { path: ':subcategory', component: CategoryComponent}
+     ]},
+    {name: "Junior Niña",path:"junior-nina", component: CategoryComponent, children: [
+        { path: ':subcategory', component: CategoryComponent}
+     ]},
 ];
