@@ -18,10 +18,11 @@
             </div>
         </ul>
     </nav>
-            <ul *ngIf="isMobileSize && isOpenMobileBar" class="navbar-mobile-menu" >
+        <div class="navbar-mobile-container" *ngIf="isMobileSize && isOpenMobileBar">
+            <ul  class="navbar-mobile-menu" >
                 <app-mobile-nav-item *ngFor="let category of categories" [Category]="category" ></app-mobile-nav-item>
             </ul>
-    
+        </div>    
     <div class="store-location">
         <i class="fas fa-map-marker-alt"></i>
         <span>España</span>

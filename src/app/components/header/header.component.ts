@@ -60,5 +60,4 @@ export class HeaderComponent implements OnInit {
       this.isMobileSize = false;
     }  
   }
-
 }
