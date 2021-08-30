@@ -12,7 +12,6 @@ import { NavbarState } from '../../State/navbarCategory.state';
 export class HeaderComponent implements OnInit {
   currentCategory: Category | undefined;
   categories: Category[]; 
-  navHover:boolean = false;
   menuHover:boolean = false;
   isMobileSize:boolean = false;
   isOpenMobileBar:boolean = false;
@@ -28,19 +27,14 @@ export class HeaderComponent implements OnInit {
     this.checkMobileScreen();
   }
   checkDropdownVisibility(){
-    if(this.menuHover == false){
+    if(this.menuHover == false ){
       this.currentCategory = undefined
     }
-    this.navHover = false;
   }
   showSubCategories(index:number): void {
     this.currentCategory = this.categories[index];
   }
 
-  categoryMouseOut() {
-    if(this.navHover == false) this.currentCategory = undefined;
-    this.menuHover = false;
-  }
   private elaboratePath(labelCategory:string){
     let category = categoryRoutes.filter(category =>{
       if(labelCategory  == category.name || (category.name).includes(labelCategory)) return category
