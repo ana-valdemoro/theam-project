@@ -9,7 +9,9 @@ export class Category {
 }
 
 export const categoryRoutes = [
-    {name: 'Primera puesta', path: "primera-puesta", component: CategoryComponent},
+    {name: 'Primera puesta', path: "primera-puesta", component: CategoryComponent, children: [
+       { path: ':subcategory', component: CategoryComponent}
+    ]},
     {name: 'Bebé', path: "bebe", component: CategoryComponent},
     {name: 'Niño', path: "nino", component: CategoryComponent},
     {name: 'Niña', path: "nina", component: CategoryComponent},

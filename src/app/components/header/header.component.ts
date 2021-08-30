@@ -1,7 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Category } from 'src/app/models/category';
 import { CategoriesProvider } from '../../providers/categories.provider';
-import { categoryRoutes } from 'src/app/models/category';
 import { NavbarState } from '../../State/navbarCategory.state';
 
 @Component({
@@ -18,14 +17,13 @@ export class HeaderComponent implements OnInit {
   constructor(private categoriesProvider: CategoriesProvider, private navbarCategoryState: NavbarState) {}
 
   ngOnInit(): void {
-    this.categoriesProvider.getCategoriesList().subscribe(values  =>{
-      this.categories = values.map(category =>{;
-        category.route = this.elaboratePath(category.name);
-        return category;
-      })
-    });
+    this.categoriesProvider.getCategoriesList().then(categories => {
+      this.categories = categories;
+    })
     this.checkMobileScreen();
   }
+
+
   checkDropdownVisibility(){
     if(this.menuHover == false ){
       this.currentCategory = undefined
@@ -35,12 +33,6 @@ export class HeaderComponent implements OnInit {
     this.currentCategory = this.categories[index];
   }
 
-  private elaboratePath(labelCategory:string){
-    let category = categoryRoutes.filter(category =>{
-      if(labelCategory  == category.name || (category.name).includes(labelCategory)) return category
-    });
-    return '/'+ category[0].path;
-  }
 
   saveNavbarState(category: Category| null){
     this.navbarCategoryState.setCategory(category);
