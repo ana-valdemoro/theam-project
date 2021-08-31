@@ -2,7 +2,6 @@
     <div class="logo">
         <div *ngIf="isMobileSize" class="menu-mobile">
             <i *ngIf="!isOpenMobileBar"class="fas fa-bars" (click)="isOpenMobileBar = true "></i>
-            <i *ngIf="isOpenMobileBar" class="fas fa-times"  (click)="isOpenMobileBar = false "></i>
         </div>
         <a id="title" [routerLink]="['/home']" (click)="saveNavbarState(null)">Magic Childhood</a>
     </div>
@@ -19,6 +18,7 @@
         </ul>
     </nav>
         <div class="navbar-mobile-container" *ngIf="isMobileSize && isOpenMobileBar">
+            <i *ngIf="isOpenMobileBar" class="fas fa-times"  (click)="isOpenMobileBar = false "></i>
             <ul  class="navbar-mobile-menu" >
                 <app-mobile-nav-item *ngFor="let category of categories" [Category]="category" (closeEmitter)="onCloseMobileBar($event)"></app-mobile-nav-item>
             </ul>

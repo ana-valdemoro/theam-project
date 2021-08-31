@@ -107,8 +107,9 @@
 }
 .fa-times{
     font-size: 23px;
-    margin: 5px;
+    margin: 15px 7px;
     cursor: pointer;
+    color:white;
 }
 
 .navbar-mobile-menu{
@@ -123,9 +124,8 @@
 .navbar-mobile-container{
     width: 100%;
     height: 100vh;
-    background-color: grey;
-    position: absolute;
-    top: 47px;
+    background-color:  rgb(245, 103, 71);;
+    position: fixed;
     overflow-y: auto;
     
 }
