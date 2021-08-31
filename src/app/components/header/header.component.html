@@ -20,7 +20,7 @@
     </nav>
         <div class="navbar-mobile-container" *ngIf="isMobileSize && isOpenMobileBar">
             <ul  class="navbar-mobile-menu" >
-                <app-mobile-nav-item *ngFor="let category of categories" [Category]="category" ></app-mobile-nav-item>
+                <app-mobile-nav-item *ngFor="let category of categories" [Category]="category" (closeEmitter)="onCloseMobileBar($event)"></app-mobile-nav-item>
             </ul>
         </div>    
     <div class="store-location">

@@ -46,4 +46,8 @@ export class HeaderComponent implements OnInit {
       this.isMobileSize = false;
     }  
   }
+  onCloseMobileBar(response:any){
+    this.saveNavbarState(response.category);
+    if(response.close === true) this.isOpenMobileBar = false;
+  }
 }

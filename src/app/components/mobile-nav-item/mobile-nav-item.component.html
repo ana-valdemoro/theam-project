@@ -5,7 +5,7 @@
     </div>
     <ul class="subMenu-mobile"  *ngIf="areSubcategoriesShowed" >
         <li class="subMenu-mobile-item"*ngFor="let subCategory of Category.children" >
-            <a>{{subCategory.name}}</a>
+            <a [routerLink]="[Category.route +'/'+ subCategory.route]" (click)="onCloseMobileBar()">{{subCategory.name}}</a>
         </li>
     </ul>
 </li>
