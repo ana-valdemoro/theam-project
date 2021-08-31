@@ -1,4 +1,17 @@
-<p>category works!</p>
-<div *ngIf="categoryProducts">
-    <p *ngFor="let product of categoryProducts.results">{{product.name}}</p>
+<div *ngIf="products" class="main-content">
+    <h1 class="category-tittle">{{currentCategory.name}}</h1>
+    <div class="filter-menu" (click)="openFilterSortMenu()">
+        <i class="fas fa-sliders-h"></i>
+        <p>Filtrar y ordenar</p>
+    </div>
+    <div *ngIf="products" class="products">
+        <div class="product-container" *ngFor="let product of products.results">
+            <img src="./../../../assets/images/boy.jpg">
+            <a>{{product.name}}</a>
+            <div class="product-price">
+                <span>{{normalizePrice(product)}}</span>
+            </div>
+            
+        </div>
+    </div>
 </div>

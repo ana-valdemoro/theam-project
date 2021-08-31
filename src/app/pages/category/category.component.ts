@@ -1,5 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { CategoryProducts } from 'src/app/models/product';
+import { Component, OnInit } from '@angular/core';
+import { Category } from 'src/app/models/category';
+import { ProductAPIResponse, Product } from 'src/app/models/product';
+import { ProductsProvider } from 'src/app/providers/products.provider';
 import { ProductsFacade } from '../../facade/products.facade';
 
 @Component({
@@ -8,11 +10,24 @@ import { ProductsFacade } from '../../facade/products.facade';
   styleUrls: ['./category.component.scss']
 })
 export class CategoryComponent implements OnInit {
-  categoryProducts: CategoryProducts;
-  constructor(private productsFacade: ProductsFacade) { }
+  currentCategory : Category;
+  products: ProductAPIResponse;
+  constructor(private productsFacade: ProductsFacade, private productsProvider :ProductsProvider) { }
 
   ngOnInit(): void {
-    this.productsFacade.getProductsCategory().subscribe(products => this.categoryProducts = products)
+    this.currentCategory = this.productsFacade.getCurrentCategory();
+    this.productsProvider.getProductsByCategory(this.currentCategory.categoryId).subscribe(products => {
+      this.products = products;
+    });
+  }
+
+  openFilterSortMenu(){
+    
+  }
+  normalizePrice(product:Product):string{
+    let price = product.originalPrice.toString();
+    if(product.currency === 'EUR') return price.substring(0,2) + ','+ price.substring(2) +" €";
+    return "0,00 €"
   }
 
 
