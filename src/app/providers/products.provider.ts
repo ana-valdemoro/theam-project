@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { CategoryProducts} from '../models/product';
+import { ProductAPIResponse} from '../models/product';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +11,8 @@ export class ProductsProvider {
   constructor(private http: HttpClient) { }
 
   
-  getProductsByCategory(categoryId:string):Observable<CategoryProducts>{
+  getProductsByCategory(categoryId:string):Observable<ProductAPIResponse>{
     let link = this.route + "?category_id="+categoryId;
-      return this.http.get<CategoryProducts>(link);
+      return this.http.get<ProductAPIResponse>(link);
   }
 }

@@ -27,7 +27,7 @@ export class Filter{
     options: any[];
     type:string;
 }
-export class CategoryProducts{
+export class ProductAPIResponse{
     results: Product[];
     filters: Filter[];
     resultCount: number;
