@@ -18,8 +18,8 @@ export class MobileNavItemComponent implements OnInit {
   toggleSubMenuMobile(){
     this.areSubcategoriesShowed = !this.areSubcategoriesShowed;
   }
-  onCloseMobileBar(){
-    this.closeEmitter.emit({ close: true, category: this.Category});
+  onCloseMobileBar(subCategory:Category){
+    this.closeEmitter.emit({ close: true, category: subCategory});
   }
 
 }

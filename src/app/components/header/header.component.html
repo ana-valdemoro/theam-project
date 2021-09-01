@@ -12,7 +12,9 @@
             </li>
             <div *ngIf="currentCategory" class="dropdown-container" (mouseover)="menuHover = true" >
                 <ul class="dropdown-menu" (mouseleave)=" menuHover = false">
-                    <li *ngFor="let subCategory of currentCategory.children" class="dropdown-menu-item"><a [routerLink]="[currentCategory.route +'/'+ subCategory.route]">{{subCategory.name}}</a></li>
+                    <li *ngFor="let subCategory of currentCategory.children" class="dropdown-menu-item">
+                        <a [routerLink]="[currentCategory.route +'/'+ subCategory.route]" (click)="saveNavbarState(subCategory)">{{subCategory.name}}</a>
+                    </li>
                 </ul>
             </div>
         </ul>
@@ -20,7 +22,7 @@
         <div class="navbar-mobile-container" *ngIf="isMobileSize && isOpenMobileBar">
             <i *ngIf="isOpenMobileBar" class="fas fa-times"  (click)="isOpenMobileBar = false "></i>
             <ul  class="navbar-mobile-menu" >
-                <app-mobile-nav-item *ngFor="let category of categories" [Category]="category" (closeEmitter)="onCloseMobileBar($event)"></app-mobile-nav-item>
+                <app-mobile-nav-item *ngFor="let category of categories" [Category]="category" (closeEmitter)="getNotificationOfClosure($event)"></app-mobile-nav-item>
             </ul>
         </div>    
     <div class="store-location">
