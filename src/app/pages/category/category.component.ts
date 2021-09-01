@@ -1,25 +1,36 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
 import { Category } from 'src/app/models/category';
 import { ProductAPIResponse, Product } from 'src/app/models/product';
 import { ProductsProvider } from 'src/app/providers/products.provider';
-import { ProductsFacade } from '../../facade/products.facade';
+import { CategoryState } from 'src/app/State/Category.state';
 
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
   styleUrls: ['./category.component.scss']
 })
-export class CategoryComponent implements OnInit {
+export class CategoryComponent implements OnInit, OnDestroy{
   currentCategory : Category;
+  currentCategorySubscription: Subscription ;
   products: ProductAPIResponse;
-  constructor(private productsFacade: ProductsFacade, private productsProvider :ProductsProvider) { }
+  productsSubscription:Subscription ;
+  constructor(private categoryState: CategoryState, private productsProvider :ProductsProvider) { }
 
   ngOnInit(): void {
-    this.currentCategory = this.productsFacade.getCurrentCategory();
-    this.productsProvider.getProductsByCategory(this.currentCategory.categoryId).subscribe(products => {
-      this.products = products;
-      console.log(this.products);
+    this.currentCategorySubscription =  this.categoryState.getCategory().subscribe(category =>{
+      if(category != null){
+        this.currentCategory = category;
+        this.productsSubscription = this.productsProvider.getProductsByCategory(this.currentCategory.categoryId).subscribe(products => {
+          this.products = products;
+        });
+      }
     });
+   
+  }
+  ngOnDestroy(): void {
+    this.currentCategorySubscription.unsubscribe();
+    this.productsSubscription.unsubscribe();  
   }
 
   openFilterSortMenu(){
