@@ -18,6 +18,7 @@ export class CategoryComponent implements OnInit {
     this.currentCategory = this.productsFacade.getCurrentCategory();
     this.productsProvider.getProductsByCategory(this.currentCategory.categoryId).subscribe(products => {
       this.products = products;
+      console.log(this.products);
     });
   }
 
