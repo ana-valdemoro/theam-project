@@ -1,7 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Category } from 'src/app/models/category';
 import { CategoriesProvider } from '../../providers/categories.provider';
-import { NavbarState } from '../../State/navbarCategory.state';
+import { CategoryState } from '../../State/Category.state';
 
 @Component({
   selector: 'app-header',
@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
   menuHover:boolean = false;
   isMobileSize:boolean = false;
   isOpenMobileBar:boolean = false;
-  constructor(private categoriesProvider: CategoriesProvider, private navbarCategoryState: NavbarState) {}
+  constructor(private categoriesProvider: CategoriesProvider, private navbarCategoryState: CategoryState) {}
 
   ngOnInit(): void {
     this.categoriesProvider.getCategoriesList().then(categories => {
@@ -34,7 +34,7 @@ export class HeaderComponent implements OnInit {
   }
 
 
-  saveNavbarState(category: Category| null){
+  saveCategoryState(category: Category| null){
     this.navbarCategoryState.setCategory(category);
   }
   
@@ -47,7 +47,7 @@ export class HeaderComponent implements OnInit {
     }  
   }
   getNotificationOfClosure(response:any){
-    this.saveNavbarState(response.category);
+    this.saveCategoryState(response.category);
     if(response.close === true) this.isOpenMobileBar = false;
   }
 }

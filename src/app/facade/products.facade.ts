@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Category } from "../models/category";
-import { NavbarState } from '../State/navbarCategory.state';
+import { CategoryState } from '../State/Category.state';
 
 @Injectable({
     providedIn: 'root'
@@ -9,7 +9,7 @@ import { NavbarState } from '../State/navbarCategory.state';
   export class ProductsFacade {
     private currentCategoryObservable: Observable<Category>;
     private currentCategory : Category;
-    constructor(private navCategoryState: NavbarState){
+    constructor(private navCategoryState: CategoryState){
       this.currentCategoryObservable = this.navCategoryState.getCategory();
       this.currentCategoryObservable.subscribe( category =>{
         this.currentCategory = category;

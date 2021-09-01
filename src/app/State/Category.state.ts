@@ -5,7 +5,7 @@ import { Category } from '../models/category';
 @Injectable({
     providedIn: 'root'
   })
-export class NavbarState{
+export class CategoryState{
     private category$ = new BehaviorSubject<Category>(null);
     
     constructor(){}
