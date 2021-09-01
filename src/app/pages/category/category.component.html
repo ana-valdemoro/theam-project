@@ -7,7 +7,7 @@
     <div *ngIf="products" class="products">
         <div class="product-container" *ngFor="let product of products.results">
             <img src="./../../../assets/images/boy.jpg">
-            <a>{{product.name}}</a>
+            <a [routerLink]="['/'+product.sku + '.html']" > {{product.name}}</a>
             <div class="product-price">
                 <span>{{normalizePrice(product)}}</span>
             </div>
