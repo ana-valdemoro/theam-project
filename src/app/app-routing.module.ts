@@ -20,7 +20,7 @@ categoryRoutes.forEach(element => {
 });
 routes.push({path:"**",   component: ErrorComponent});
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
