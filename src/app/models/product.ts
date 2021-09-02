@@ -26,9 +26,17 @@ export class Filter{
     label: string;
     options: any[];
     type:string;
+    min?: number;
+    max?: number;
 }
 export class ProductAPIResponse{
     results: Product[];
     filters: Filter[];
     resultCount: number;
+}
+
+export class SortingFilter{
+    name: string;
+    order: string;
+    direction : string;
 }
