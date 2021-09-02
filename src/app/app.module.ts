@@ -10,6 +10,7 @@ import { CategoryComponent } from './pages/category/category.component';
 import { MobileNavItemComponent } from './components/mobile-nav-item/mobile-nav-item.component';
 import { ProductComponent } from './pages/product/product.component';
 import { FilterModalComponent } from './components/filter-modal/filter-modal.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { FilterModalComponent } from './components/filter-modal/filter-modal.com
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NoopAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
