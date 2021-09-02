@@ -11,6 +11,9 @@ import { MobileNavItemComponent } from './components/mobile-nav-item/mobile-nav-
 import { ProductComponent } from './pages/product/product.component';
 import { FilterModalComponent } from './components/filter-modal/filter-modal.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import {MatSliderModule} from '@angular/material/slider';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +30,9 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    MatSliderModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

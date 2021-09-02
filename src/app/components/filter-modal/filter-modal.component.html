@@ -2,8 +2,43 @@
     <div class="filter-container">
         <div class="filter-header">
             <h4>Ordenar y filtrar</h4>
-            <div id="cross-container">
+            <div id="times-container">
                 <i  class="fas fa-times"  (click)="onNotifyClosure()"></i>
+            </div>
+        </div>
+        <div class="filter-body">
+            <p>Ordenar por</p>
+            <div class="select-element">
+                <select name="sorting-select">
+                    <option *ngFor="let sortingFilter of sortingFilters " value="{{sortingFilter.name}}">{{sortingFilter.name}}</option>
+                  </select>
+            </div>
+            <p>Filtrar por</p>
+            <div *ngFor="let filter of filters">
+                <div class="filter-element" *ngIf ="filter.label == 'TALLA'">
+                    <span>{{filter.label}}</span>
+                    <div class="checkbox">
+                        <label *ngFor="let size of filter.options"><input type="checkbox" id="cbox1" value="first_checkbox">{{size.label}} {{time}}</label>
+                    </div>
+                </div>
+                <div class="filter-element" *ngIf ="filter.label != 'TALLA' && filter.label != 'PRICE'">
+                    <span *ngIf ="filter.label == 'GOCCO PERFIL'">SECCIÓN</span>
+                    <span *ngIf ="filter.label == 'COLOR'">{{filter.label}}</span>
+                    <div class="checkbox"> 
+                        <label *ngFor="let section of filter.options"><input type="checkbox" id="cbox1" value="first_checkbox">{{section.label.substring(0,1)}}{{section.label.substring(1).toLowerCase()}}</label>
+                    </div>
+                </div>
+                <div class="filter-element" *ngIf ="filter.label == 'PRICE'">
+                    <span>PRECIO</span>
+                    <div class="filter-price">
+                        <label>Precio mínimo: {{minPrice}}</label><label *ngIf="filter.currency == 'EUR'">€</label>
+                        <mat-slider class="flex-mat-slider"  min="{{filter.min}}" max="{{filter.max}}" step="1" [(ngModel)]="minPrice" value="{{filter.min}}"></mat-slider>
+                    </div>
+                    <div class="filter-price">
+                        <label>Precio máximo: {{maxPrice}}</label><label *ngIf="filter.currency == 'EUR'">€</label>
+                        <mat-slider class="flex-mat-slider" min="{{filter.min}}" max="{{filter.max}}" step="1" [(ngModel)]="maxPrice" value="{{filter.max}}"></mat-slider>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

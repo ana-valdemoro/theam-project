@@ -13,5 +13,5 @@
             </div>
         </div>
     </div>
-    <app-filter-modal *ngIf="isFilterModalOpen" (closeEmitter)="getNotificationOfClosure($event)"></app-filter-modal>
+    <app-filter-modal *ngIf="isFilterModalOpen" [filters] = "products.filters" [category]="currentCategory" (closeEmitter)="getNotificationOfClosure($event)"></app-filter-modal>
 </div>

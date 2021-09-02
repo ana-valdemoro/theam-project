@@ -31,6 +31,43 @@
         color: white;
     }
 }
-#cross-container{
-    flex-grow: 0.2;
+#times-container{
+    flex-grow: 0.1;
+}
+.filter-body{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 25px;
+}
+.select-element{
+    display: flex;
+    flex-direction: column;
+}
+.filter-element{
+    display: flex;
+    flex-direction: column;
+    span{
+        color:black;
+    }
+}
+.checkbox{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 0.5em;
+    margin: 8px 0;
+}
+.filter-price{
+    display: flex;
+    align-items: center;
+    .flex-mat-slider{
+        flex-grow: 1;
+        color:black
+    }
+}
+
+@media only screen and (max-width: 856px){
+    .filter-container{
+        width: 100%;
+    } 
 }
