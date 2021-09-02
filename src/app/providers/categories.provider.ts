@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Category } from '../models/category';
 import { CategoryService } from '../services/category.service';
+import { SortingFilter } from '../models/product';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,11 @@ export class CategoriesProvider {
       return categories;
     });
     
+  }
+
+  getSortingFilters(categoryId:string): Promise<SortingFilter[]>{
+    let route = "'https://private-anon-a0981503b5-gocco.apiary-mock.com/stores/{store_id}/categories/{category_id}/sortby');"
+    return this.http.get<any>(this.route+ `/${categoryId}/sortby`).toPromise();
   }
 
 
