@@ -15,6 +15,7 @@ export class CategoryComponent implements OnInit, OnDestroy{
   currentCategorySubscription: Subscription ;
   products: ProductAPIResponse;
   productsSubscription:Subscription ;
+  isFilterModalOpen:boolean = false;
   constructor(private categoryState: CategoryState, private productsProvider :ProductsProvider) { }
 
   ngOnInit(): void {
@@ -28,18 +29,22 @@ export class CategoryComponent implements OnInit, OnDestroy{
     });
    
   }
+
   ngOnDestroy(): void {
     this.currentCategorySubscription.unsubscribe();
     this.productsSubscription.unsubscribe();  
   }
 
-  openFilterSortMenu(){
-    
+  openFilterModal(){
+    this.isFilterModalOpen = !this.isFilterModalOpen;
   }
   normalizePrice(product:Product):string{
     let price = product.originalPrice.toString();
     if(product.currency === 'EUR') return price.substring(0,2) + ','+ price.substring(2) +" €";
     return "0,00 €"
+  }
+  getNotificationOfClosure(response:any){
+    if(response == true) this.isFilterModalOpen = false;
   }
 
 

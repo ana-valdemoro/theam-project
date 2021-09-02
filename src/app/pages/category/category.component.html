@@ -1,6 +1,6 @@
 <div *ngIf="products" class="main-content">
     <h1 class="category-tittle">{{currentCategory.name}}</h1>
-    <div class="filter-menu" (click)="openFilterSortMenu()">
+    <div class="filter-menu" (click)="openFilterModal()">
         <i class="fas fa-sliders-h"></i>
         <p>Filtrar y ordenar</p>
     </div>
@@ -11,7 +11,7 @@
             <div class="product-price">
                 <span>{{normalizePrice(product)}}</span>
             </div>
-            
         </div>
     </div>
+    <app-filter-modal *ngIf="isFilterModalOpen" (closeEmitter)="getNotificationOfClosure($event)"></app-filter-modal>
 </div>

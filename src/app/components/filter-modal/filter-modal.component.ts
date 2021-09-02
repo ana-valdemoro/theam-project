@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-filter-modal',
@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./filter-modal.component.scss']
 })
 export class FilterModalComponent implements OnInit {
-
+  @Output() closeEmitter = new EventEmitter<any>();
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  onNotifyClosure(){
+    this.closeEmitter.emit(true);
+  }
 }

@@ -1,0 +1,36 @@
+.modal{
+    position: fixed;
+    background-color: rgba(0,0,0,0.5);
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: row-reverse;
+}
+.filter-container{
+    background-color: white;
+    width: 50%;
+    height: 100%;
+    overflow-y: scroll;
+    
+}
+.fa-times{
+    font-size: 23px;
+    margin: 15px 7px;
+    cursor: pointer;
+    color: white;
+}
+.filter-header{
+    background-color: var(--base-color);
+    display: flex;
+    align-items: center;
+    h4{
+        flex-grow: 2;
+        text-align: center;
+        color: white;
+    }
+}
+#cross-container{
+    flex-grow: 0.2;
+}
