@@ -3,6 +3,7 @@ import { Category } from 'src/app/models/category';
 import { Filter, SortingFilter } from 'src/app/models/product';
 import { CategoriesProvider } from 'src/app/providers/categories.provider';
 import { FormGroup, FormBuilder, FormControl } from  '@angular/forms'; 
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-filter-modal',
@@ -15,26 +16,18 @@ export class FilterModalComponent implements OnInit {
   @Input() category : Category;
   sortingFilters: SortingFilter[];
   time : string;
-  minPrice:any;
-  maxPrice:any;
   filterForm : FormGroup;
-  constructor(private categoriesProvider :CategoriesProvider, private formBuilder: FormBuilder ) { }
+  constructor(private categoriesProvider :CategoriesProvider, private formBuilder: FormBuilder, private router: Router ) { }
 
   ngOnInit(): void {
+    this.initializeVariables();
     this.initializeForm();
-    console.log(this.filterForm);
-    this.filters.forEach(filter => {
-      if(filter.label === "PRICE") {
-        this.minPrice = filter.min;
-        this.maxPrice = filter.max;
-      }
-    });
-    if(this.category.name == "Primera puesta" || this.category.name == "Bebé") this.time = "meses";
-    else this.time = "años";
-    console.log(this.filters);
     this.initializeSortinFilter();
   }
-
+  initializeVariables(){
+    let mainRoute = this.router.url.split('/').filter(route => route !== '')[0];
+    (mainRoute == "primera-puesta" || mainRoute == "bebe") ? this.time = "meses" : this.time = "años";
+  }
   initializeSortinFilter(){
     this.categoriesProvider.getSortingFilters(this.category.categoryId)
     .then( sortingFilters => { 
@@ -42,32 +35,34 @@ export class FilterModalComponent implements OnInit {
     });
   }
 
-  initializeForm() {
+  initializeForm():void {
     let form = {};
     this.filters.forEach(filter => {
-      form[filter.filterName] = this.initializeFilter(filter);
+      form[filter.filterName] = this.constituteFormGroup(filter);
     });
     this.filterForm = this.formBuilder.group(form);
   }
-  initializeFilter(filter: Filter): any{
+  constituteFormGroup(filter: Filter): any{
     if(filter.label !== "PRICE" ){
-      let filtercontrol = this.initializeControl(filter.options);
+      let filtercontrol = this.constituteFormControls(filter.options);
      return this.formBuilder.group(filtercontrol); 
     }else{
       let options = {};
       options['minPrice'] = filter.min;
-      options['maxPrice'] = filter.max;
+      options['maxPrice'] =  filter.max;
       return this.formBuilder.group(options);
     }
   }
 
-  initializeControl(filterOption:any) {
+  constituteFormControls(filterOption:any) {
     let object = {};
     filterOption.forEach(element => {
       object[element.label] = false;
     });
     return object;
   }
+  get minPrice (){ return this.filterForm.get('price').get('minPrice').value}
+  get maxPrice (){ return this.filterForm.get('price').get('maxPrice').value}
 
   onApplyFilters(){
     console.log(this.filterForm);
