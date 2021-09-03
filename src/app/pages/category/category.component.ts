@@ -24,6 +24,7 @@ export class CategoryComponent implements OnInit, OnDestroy{
         this.currentCategory = category;
         this.productsSubscription = this.productsProvider.getProductsByCategory(this.currentCategory.categoryId).subscribe(products => {
           this.products = products;
+          console.log(this.products);
         });
       }
     });

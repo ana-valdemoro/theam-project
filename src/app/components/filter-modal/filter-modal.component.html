@@ -14,32 +14,34 @@
                   </select>
             </div>
             <p>Filtrar por</p>
-            <div *ngFor="let filter of filters">
-                <div class="filter-element" *ngIf ="filter.label == 'TALLA'">
+            <Form [formGroup] = "filterForm"  *ngFor="let filter of filters" (ngSubmit)="onApplyFilters()">
+                <div formGroupName="{{filter.filterName}}" class="filter-element" *ngIf ="filter.label == 'TALLA'">
                     <span>{{filter.label}}</span>
                     <div class="checkbox">
-                        <label *ngFor="let size of filter.options"><input type="checkbox" id="cbox1" value="first_checkbox">{{size.label}} {{time}}</label>
+                        <label *ngFor="let size of filter.options"><input type="checkbox" formControlName="{{size.label}}">{{size.label}} {{time}}</label>
                     </div>
                 </div>
-                <div class="filter-element" *ngIf ="filter.label != 'TALLA' && filter.label != 'PRICE'">
+                <div formGroupName="{{filter.filterName}}" class="filter-element" *ngIf ="filter.label != 'TALLA' && filter.label != 'PRICE'">
                     <span *ngIf ="filter.label == 'GOCCO PERFIL'">SECCIÓN</span>
                     <span *ngIf ="filter.label == 'COLOR'">{{filter.label}}</span>
                     <div class="checkbox"> 
-                        <label *ngFor="let section of filter.options"><input type="checkbox" id="cbox1" value="first_checkbox">{{section.label.substring(0,1)}}{{section.label.substring(1).toLowerCase()}}</label>
+                        <label *ngFor="let option of filter.options"><input type="checkbox" formControlName="{{option.label}}">{{option.label.substring(0,1)}}{{option.label.substring(1).toLowerCase()}}</label>
                     </div>
                 </div>
-                <div class="filter-element" *ngIf ="filter.label == 'PRICE'">
+                <div formGroupName="{{filter.filterName}}"  class="filter-element" *ngIf ="filter.label == 'PRICE'">
                     <span>PRECIO</span>
                     <div class="filter-price">
                         <label>Precio mínimo: {{minPrice}}</label><label *ngIf="filter.currency == 'EUR'">€</label>
-                        <mat-slider class="flex-mat-slider"  min="{{filter.min}}" max="{{filter.max}}" step="1" [(ngModel)]="minPrice" value="{{filter.min}}"></mat-slider>
+                        <mat-slider class="flex-mat-slider"  min="{{filter.min}}" max="{{filter.max}}" step="1" formControlName="minPrice" value="{{filter.min}}"></mat-slider>
                     </div>
                     <div class="filter-price">
                         <label>Precio máximo: {{maxPrice}}</label><label *ngIf="filter.currency == 'EUR'">€</label>
-                        <mat-slider class="flex-mat-slider" min="{{filter.min}}" max="{{filter.max}}" step="1" [(ngModel)]="maxPrice" value="{{filter.max}}"></mat-slider>
+                        <mat-slider class="flex-mat-slider" min="{{filter.min}}" max="{{filter.max}}" step="1" formControlName="maxPrice" value="{{filter.max}}"></mat-slider>
                     </div>
                 </div>
-            </div>
+                <button>Aplicar filtros</button>
+            </Form>
+            <div>{{filterForm.value | json}}</div>
         </div>
     </div>
 </div>

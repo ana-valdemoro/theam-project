@@ -12,7 +12,7 @@ import { ProductComponent } from './pages/product/product.component';
 import { FilterModalComponent } from './components/filter-modal/filter-modal.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSliderModule} from '@angular/material/slider';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -32,7 +32,8 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     NoopAnimationsModule,
     MatSliderModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
