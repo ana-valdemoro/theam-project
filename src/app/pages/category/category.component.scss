@@ -31,7 +31,11 @@
     border-bottom: 1px solid var(--base-color);
     justify-content: center;
     align-items: center;
-    a, span{
+    a{
+        cursor: pointer;
+        color: black;
+    }
+    span{
         color: black;
     }
     img{

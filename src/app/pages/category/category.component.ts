@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { NavigationExtras, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { Category } from 'src/app/models/category';
 import { ProductAPIResponse, Product, SortingFilter } from 'src/app/models/product';
@@ -15,7 +16,7 @@ export class CategoryComponent implements OnInit, OnDestroy{
   currentCategorySubscription: Subscription ;
   products: ProductAPIResponse;
   isFilterModalOpen:boolean = false;
-  constructor(private categoryState: CategoryState, private productsProvider :ProductsProvider) { }
+  constructor(private categoryState: CategoryState, private productsProvider :ProductsProvider, private router: Router) { }
 
   ngOnInit(): void {
     this.currentCategorySubscription =  this.categoryState.getCategory().subscribe(category =>{
@@ -29,7 +30,14 @@ export class CategoryComponent implements OnInit, OnDestroy{
   ngOnDestroy(): void {
     this.currentCategorySubscription.unsubscribe();
   }
-
+  onNavigateProductView(sku: string){
+    const extras: NavigationExtras = {
+      queryParams: {
+          sku: sku
+      }
+  };
+    this.router.navigate(['/product_detail'], extras);
+  }
   openFilterModal(){
     this.isFilterModalOpen = !this.isFilterModalOpen;
   }
