@@ -13,6 +13,7 @@ import { FilterModalComponent } from './components/filter-modal/filter-modal.com
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSliderModule} from '@angular/material/slider';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CategoryComponent,
     MobileNavItemComponent,
     ProductComponent,
-    FilterModalComponent
+    FilterModalComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,
