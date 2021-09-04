@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { ProductAPIResponse} from '../models/product';
+import { ProductAPIResponse, SortingFilter} from '../models/product';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +10,13 @@ export class ProductsProvider {
   constructor(private http: HttpClient) { }
 
   
-  getProductsByCategory(categoryId:string):Observable<ProductAPIResponse>{
-    let link = this.route + "?category_id="+categoryId;
-      return this.http.get<ProductAPIResponse>(link);
+  getProductsByCategory(categoryId:string):Promise<ProductAPIResponse>{
+    let link = this.route + "?category_id="+categoryId+ "&dir=desc&order=bestsellers";
+      return this.http.get<ProductAPIResponse>(link).toPromise();
+  }
+
+  getProductsByCategoryAndOrdered(categoryId:string, sortFilter: SortingFilter):Promise<ProductAPIResponse>{
+    let link = this.route + "?category_id="+categoryId+ "&order=" +sortFilter.order + "&dir=" + sortFilter.direction;
+      return this.http.get<ProductAPIResponse>(link).toPromise();
   }
 }

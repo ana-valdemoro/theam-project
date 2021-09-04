@@ -17,6 +17,7 @@ export class FilterModalComponent implements OnInit {
   sortingFilters: SortingFilter[];
   time : string;
   filterForm : FormGroup;
+  selectValue:string = 'Los más vendidos';
   constructor(private categoriesProvider :CategoriesProvider, private formBuilder: FormBuilder, private router: Router ) { }
 
   ngOnInit(): void {
@@ -65,9 +66,10 @@ export class FilterModalComponent implements OnInit {
   get maxPrice (){ return this.filterForm.get('price').get('maxPrice').value}
 
   onApplyFilters(){
-    console.log(this.filterForm);
+    let sortingFilter  = this.sortingFilters.filter(filter => filter.name == this.selectValue);
+    this.closeEmitter.emit({close:true, sortFilter: sortingFilter[0] });
   }
   onNotifyClosure(){
-    this.closeEmitter.emit(true);
+    this.closeEmitter.emit({close: true});
   }
 }

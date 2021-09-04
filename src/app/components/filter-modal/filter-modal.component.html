@@ -9,7 +9,7 @@
         <div class="filter-body">
             <p>Ordenar por</p>
             <div class="select-element">
-                <select name="sorting-select">
+                <select name="sorting-select" [(ngModel)]='selectValue'>
                     <option *ngFor="let sortingFilter of sortingFilters " value="{{sortingFilter.name}}">{{sortingFilter.name}}</option>
                   </select>
             </div>
@@ -38,7 +38,7 @@
                         </div>
                     </div>
                  </div>
-                <button>Aplicar filtros</button>
+                <button *ngIf="selectValue != 'Los más vendidos'">Aplicar filtros</button>
             </Form>
             <div>{{filterForm.value | json}}</div>
         </div>
