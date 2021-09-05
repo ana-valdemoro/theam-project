@@ -29,11 +29,11 @@
                     <div formGroupName="{{filter.filterName}}"  class="filter-element" *ngIf ="filter.label == 'PRICE'">
                         <span>PRECIO</span>
                         <div class="filter-price">
-                            <label>Precio mínimo: {{minPrice}}</label><label *ngIf="filter.currency == 'EUR'">€</label>
+                            <label>Precio mínimo: {{minPrice.value}}</label><label *ngIf="filter.currency == 'EUR'">€</label>
                             <mat-slider class="flex-mat-slider"  min="{{filter.min}}" max="{{filter.max}}" step="1" formControlName="minPrice" ></mat-slider>
                         </div>
                         <div class="filter-price">
-                            <label>Precio máximo: {{maxPrice}}</label><label *ngIf="filter.currency == 'EUR'">€</label>
+                            <label>Precio máximo: {{maxPrice.value}}</label><label *ngIf="filter.currency == 'EUR'">€</label>
                             <mat-slider class="flex-mat-slider" min="{{filter.min}}" max="{{filter.max}}" step="1" formControlName="maxPrice" ></mat-slider>
                         </div>
                     </div>
