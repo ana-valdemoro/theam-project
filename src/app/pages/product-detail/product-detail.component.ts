@@ -18,10 +18,13 @@ export class ProductDetailComponent implements OnInit {
         this.productProvider.getProductByScanCode(params.sku)
         .then(product => {
           this.product = product;
-          console.log(this.product);
         });
       });
 
   }
-
+  normalizePrice(product:Product):string{
+    let price = product.originalPrice.toString();
+    if(product.currency === 'EUR') return price.substring(0,2) + ','+ price.substring(2) +" €";
+    return "0,00 €"
+  }
 }
