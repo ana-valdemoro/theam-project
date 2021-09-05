@@ -38,9 +38,8 @@
                         </div>
                     </div>
                  </div>
-                <button *ngIf="selectValue != 'Los más vendidos'">Aplicar filtros</button>
+                <button *ngIf="showButton()">Aplicar filtros</button>
             </Form>
-            <div>{{filterForm.value | json}}</div>
         </div>
     </div>
 </div>

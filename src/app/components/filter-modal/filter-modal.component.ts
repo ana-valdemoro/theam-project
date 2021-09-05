@@ -22,7 +22,6 @@ export class FilterModalComponent implements OnInit {
   constructor(private categoriesProvider :CategoriesProvider, private formBuilder: FormBuilder, private router: Router ) { }
 
   ngOnInit(): void {
-    console.log(this.filters);
     this.initializeVariables();
     this.initializeForm();
     this.initializeGroupControlChanges();
@@ -39,7 +38,7 @@ export class FilterModalComponent implements OnInit {
   }
 
   initializePriceFilterControlChanges(filter:Filter){
-    this.minPrice.valueChanges.subscribe(value =>{  
+    this.minPrice.valueChanges.subscribe(value =>{
       this.filtersToBeApplied[filter.filterName].min = value;
     });
     this.maxPrice.valueChanges.subscribe(value =>{
@@ -53,7 +52,6 @@ export class FilterModalComponent implements OnInit {
       this.filterForm.get(filter.filterName).get(option.label).valueChanges.subscribe(value => {
         if(value){
           this.filtersToBeApplied[filter.filterName].push(option.id);
-          console.log(this.filtersToBeApplied);
         }else{
           this.deleteFilterToApply(filter.filterName, option.label);
         }
@@ -119,5 +117,18 @@ export class FilterModalComponent implements OnInit {
   }
   onNotifyClosure(){
     this.closeEmitter.emit({close: true});
+  }
+
+  filterExist():boolean{
+    for(let key in this.filtersToBeApplied){
+      if(this.filtersToBeApplied[key].length != 0) return true;
+    }
+    return false;
+  } 
+  checkIfPriceFilterExists():boolean{
+    return this.filtersToBeApplied['price'].hasOwnProperty('min') || this.filtersToBeApplied['price'].hasOwnProperty('max');
+  }
+  showButton():boolean{
+    return this.selectValue != 'Los más vendidos' || this.filterExist() || this.checkIfPriceFilterExists();
   }
 }
