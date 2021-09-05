@@ -1,0 +1,27 @@
+<div class="product-detail-main-content" *ngIf="product">
+    <div class="image-container">
+        <img src="./../../../assets/images/boy.jpg">
+    </div>
+    <div class="product-detail-information">
+        <span class="product-code ">{{product.sku}}</span>
+        <div>
+            <h1 class="product-name bold">{{product.name}}</h1>
+            <span class="bold tittle">{{normalizePrice(product)}}</span>
+        </div>
+        <div>
+            <span class="tittle">COLOR</span>
+            <div class="attributes-container color-container">
+                <div class="color-box"></div>
+                <span class="color-name">{{product.color}}</span>
+            </div>
+        </div>
+        <div class="sizes-product">
+            <span class="tittle">TALLA</span>
+            <div class="size-label-container">
+                <div *ngFor="let size of product.sizes" class="attributes-container">
+                    <span>{{size.name}} años</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
