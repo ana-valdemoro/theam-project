@@ -4,6 +4,7 @@ import { Observable, Subscription } from 'rxjs';
 import { Category } from 'src/app/models/category';
 import { ProductAPIResponse, Product, SortingFilter } from 'src/app/models/product';
 import { ProductsProvider } from 'src/app/providers/products.provider';
+import { PriceService } from 'src/app/services/price.service';
 import { CategoryState } from 'src/app/State/Category.state';
 
 @Component({
@@ -16,7 +17,7 @@ export class CategoryComponent implements OnInit, OnDestroy{
   currentCategorySubscription: Subscription ;
   products: ProductAPIResponse;
   isFilterModalOpen:boolean = false;
-  constructor(private categoryState: CategoryState, private productsProvider :ProductsProvider, private router: Router) { }
+  constructor(private categoryState: CategoryState, private productsProvider :ProductsProvider, private router: Router, private priceService: PriceService) { }
 
   ngOnInit(): void {
     this.currentCategorySubscription =  this.categoryState.getCategory().subscribe(category =>{
@@ -41,10 +42,8 @@ export class CategoryComponent implements OnInit, OnDestroy{
   openFilterModal(){
     this.isFilterModalOpen = !this.isFilterModalOpen;
   }
-  normalizePrice(product:Product):string{
-    let price = product.originalPrice.toString();
-    if(product.currency === 'EUR') return price.substring(0,2) + ','+ price.substring(2) +" €";
-    return "0,00 €"
+  getPrice(product:Product):string{
+    return this.priceService.normalizePrice(product);
   }
   getNotificationOfClosure(response:any){
     if(response.close == true) this.isFilterModalOpen = false;

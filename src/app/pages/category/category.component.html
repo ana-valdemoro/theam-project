@@ -9,7 +9,7 @@
             <img src="./../../../assets/images/boy.jpg">
             <a (click)="onNavigateProductView(product.sku)" > {{product.name}}</a>
             <div class="product-price">
-                <span>{{normalizePrice(product)}}</span>
+                <span>{{getPrice(product)}}</span>
             </div>
         </div>
     </div>

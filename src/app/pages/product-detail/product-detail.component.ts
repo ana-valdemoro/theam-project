@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/models/product';
 import { ProductsProvider } from 'src/app/providers/products.provider';
+import { PriceService } from 'src/app/services/price.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -10,7 +11,7 @@ import { ProductsProvider } from 'src/app/providers/products.provider';
 })
 export class ProductDetailComponent implements OnInit {
   product: Product;
-  constructor( private route: ActivatedRoute, private productProvider: ProductsProvider ) { }
+  constructor( private route: ActivatedRoute, private productProvider: ProductsProvider, private priceService: PriceService ) { }
 
   ngOnInit(): void {
     this.route.queryParams
@@ -22,9 +23,7 @@ export class ProductDetailComponent implements OnInit {
       });
 
   }
-  normalizePrice(product:Product):string{
-    let price = product.originalPrice.toString();
-    if(product.currency === 'EUR') return price.substring(0,2) + ','+ price.substring(2) +" €";
-    return "0,00 €"
+  getPrice(product:Product):string{
+    return this.priceService.normalizePrice(product);
   }
 }
