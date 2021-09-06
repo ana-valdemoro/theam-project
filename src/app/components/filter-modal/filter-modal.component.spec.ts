@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { MobileNavItemComponent } from './mobile-nav-item.component';
+import { FilterModalComponent } from './filter-modal.component';
 
-describe('MobileNavItemComponent', () => {
-  let component: MobileNavItemComponent;
-  let fixture: ComponentFixture<MobileNavItemComponent>;
+describe('FilterModalComponent', () => {
+  let component: FilterModalComponent;
+  let fixture: ComponentFixture<FilterModalComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ MobileNavItemComponent ]
+      declarations: [ FilterModalComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MobileNavItemComponent);
+    fixture = TestBed.createComponent(FilterModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

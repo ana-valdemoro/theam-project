@@ -1,17 +1,17 @@
 <div *ngIf="products" class="main-content">
     <h1 class="category-tittle">{{currentCategory.name}}</h1>
-    <div class="filter-menu" (click)="openFilterSortMenu()">
+    <div class="filter-menu" (click)="openFilterModal()">
         <i class="fas fa-sliders-h"></i>
         <p>Filtrar y ordenar</p>
     </div>
     <div *ngIf="products" class="products">
         <div class="product-container" *ngFor="let product of products.results">
             <img src="./../../../assets/images/boy.jpg">
-            <a [routerLink]="['/'+product.sku + '.html']" > {{product.name}}</a>
+            <a (click)="onNavigateProductView(product.sku)" > {{product.name}}</a>
             <div class="product-price">
-                <span>{{normalizePrice(product)}}</span>
+                <span>{{getPrice(product)}}</span>
             </div>
-            
         </div>
     </div>
+    <app-filter-modal *ngIf="isFilterModalOpen" [filters] = "products.filters" [category]="currentCategory" (closeEmitter)="getNotificationOfClosure($event)"></app-filter-modal>
 </div>

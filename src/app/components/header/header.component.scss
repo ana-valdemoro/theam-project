@@ -6,7 +6,7 @@
     border-bottom: 1px solid rgba(245,77,40,.3);
     border-bottom-width: 2px;
     border-bottom-style: solid;
-    border-bottom-color: rgba(245, 77, 40, 0.9);
+    border-bottom-color: var(--base-color);
 
     .navbar{
         .navbar-menu{
@@ -38,7 +38,7 @@
                 border-bottom: 2px solid #f52fcf;
             }
             .active-route,a:hover, a:focus{
-                border-bottom: 2px solid rgba(245, 77, 40, 0.9);
+                border-bottom: 2px solid var(--base-color);
             }
 
         }
@@ -70,7 +70,7 @@
                 padding: 0.8em 0.5em;
                 background-color:white;
                 a:hover, a:focus{
-                    border-bottom: 1px solid rgba(245, 77, 40, 0.9);
+                    border-bottom: 1px solid var(--base-color);
                 }
                     
             }
