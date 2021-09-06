@@ -1,31 +1,24 @@
-.main-page{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-.categories-banner{
-    //Layout
-    display: flex;
-    width: 60%;
-
-    .category{
-        //layout
+    .main-page{
         display: flex;
-        flex-wrap: wrap;
         justify-content: center;
-        width: 50%;
-        background-color: var(--base-color);
-        img{
-            object-fit: cover;
-            width: 100%;
-            height: auto;
-            max-height: 530px;
+        flex-wrap: wrap;
+
+        .category{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: var(--base-color);
+            cursor: pointer;       
+            img{
+                object-fit: cover;
+                width: 100%;
+                height: auto;
+                max-height: 530px;
+            }
+            h4{
+                color: white;  
+            }
+        
         }
-        h4{
-            color: white;
-            
-        }
-       
+        
     }
-    
-}
