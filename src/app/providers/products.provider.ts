@@ -15,24 +15,32 @@ export class ProductsProvider {
     return this.http.get<ProductAPIResponse>(link).toPromise();
   }
 
-  getProductsByCategoryAndOrdered(categoryId:string, sortFilter: SortingFilter):Promise<ProductAPIResponse>{
-    let link = this.route + "?category_id="+categoryId+ "&order=" +sortFilter.order + "&dir=" + sortFilter.direction;
+  getProductsSorted(categoryId:string, sortFilter: SortingFilter):Promise<ProductAPIResponse>{
+    let link = this.elaboratePath(categoryId,sortFilter);
       return this.http.get<ProductAPIResponse>(link).toPromise();
   }
 
   getProductsFiltered(categoryId:string, filters: any):Promise<ProductAPIResponse>{
-    let link = this.elaboratePath(categoryId, filters)
+    let link = this.elaboratePath(categoryId, undefined,  filters);
     return this.http.get<ProductAPIResponse>(link).toPromise();
   }
-  elaboratePath(categoryId:string, filters: any):string{
+
+  getProductsFilteredAndSorted(categoryId:string, filters:any, sortFilter: SortingFilter):Promise<ProductAPIResponse>{
+    let link = this.elaboratePath(categoryId, sortFilter, filters);
+    return this.http.get<ProductAPIResponse>(link).toPromise();
+  }
+  elaboratePath(categoryId:string, sortFilter?:SortingFilter, filters?: any, ):string{
     let link = this.route + "?category_id="+categoryId+'&';
-    for(let key in filters){
-      if(key != "price" && filters[key].length!=0){
-        link += this.elaborateSubFilterPath(key, filters[key]);
-      }else if(key == "price"){
-        link += this.elaboratePricePath(key, filters[key]);
+    if(sortFilter != undefined) link += "order=" +sortFilter.order + "&dir=" + sortFilter.direction +'&';
+    if(filters != undefined){
+      for(let key in filters){
+        if(key != "price" && filters[key].length!=0){
+          link += this.elaborateSubFilterPath(key, filters[key]);
+        }else if(key == "price"){
+          link += this.elaboratePricePath(key, filters[key]);
+        }
       }
-    }
+    }  
     let lastIndex = link.lastIndexOf('&');
     if(lastIndex != -1 && lastIndex == link.length-1 ) link = link.substring(0,lastIndex);
     return link;

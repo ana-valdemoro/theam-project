@@ -49,12 +49,12 @@ export class CategoryComponent implements OnInit, OnDestroy{
   getNotificationOfClosure(response:any){
     if(response.close == true) this.isFilterModalOpen = false;
     if (response.sortFilter != undefined && response.filter != undefined) this.getFilterAndSortProducts(response.filter, response.sortFilter) ;
-    if(response.filter != undefined) this.getFilterProduct(response.filter) ;
-    if(response.sortFilter != undefined) this.getSortProducts(response.sortFilter);
+    else if(response.filter != undefined) this.getFilterProduct(response.filter) ;
+    else if(response.sortFilter != undefined) this.getSortProducts(response.sortFilter);
   }
   getFilterAndSortProducts(filter: any, sortFilter: SortingFilter ) {
-    console.log(filter);
-    console.log(sortFilter)
+    this.productsProvider.getProductsFilteredAndSorted(this.currentCategory.categoryId, filter, sortFilter)
+      .then(products => {this.products = products});
   }
   getFilterProduct(filter: any) {
     this.productsProvider.getProductsFiltered(this.currentCategory.categoryId, filter)
@@ -62,7 +62,7 @@ export class CategoryComponent implements OnInit, OnDestroy{
   }
 
   getSortProducts(sortFilter: SortingFilter ){
-    this.productsProvider.getProductsByCategoryAndOrdered(this.currentCategory.categoryId, sortFilter)
+    this.productsProvider.getProductsSorted(this.currentCategory.categoryId, sortFilter)
       .then(products => {this.products = products});
   }
 
