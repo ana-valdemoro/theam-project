@@ -21,7 +21,6 @@ export class ProductRouteService {
     }  
     let lastIndex = link.lastIndexOf('&');
     if(lastIndex != -1 && lastIndex == link.length-1 ) link = link.substring(0,lastIndex);
-    console.log(link);
     return link;
   }
   elaboratePricePath(key:string, filter:any):string{
