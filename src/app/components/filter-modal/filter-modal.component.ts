@@ -17,7 +17,7 @@ export class FilterModalComponent implements OnInit {
   sortingFilters: SortingFilter[];
   time : string;
   filterForm : FormGroup;
-  selectValue:string = 'Los más vendidos';
+  orderSelectValue:string = 'Los más vendidos';
   filtersToBeApplied: any[] = [];
   constructor(private categoriesProvider :CategoriesProvider, private formBuilder: FormBuilder, private router: Router ) { }
 
@@ -112,9 +112,16 @@ export class FilterModalComponent implements OnInit {
   get maxPrice (){ return this.filterForm.get('price').get('maxPrice')}
 
   onApplyFilters(){
-    let sortingFilter  = this.sortingFilters.filter(filter => filter.name == this.selectValue);
-    this.closeEmitter.emit({close:true, sortFilter: sortingFilter[0] });
+    let sortingFilter  = this.sortingFilters.filter(filter => filter.name == this.orderSelectValue); 
+    if(this.checkOrderSelectValue() && ( this.filterExist() || this.checkIfPriceFilterExists() )){
+      this.closeEmitter.emit({close:true, sortFilter: sortingFilter[0], filter: this.filtersToBeApplied });
+    }else if( this.filterExist() || this.checkIfPriceFilterExists() ){
+      this.closeEmitter.emit({close:true, filter: this.filtersToBeApplied });
+    }else if(this.checkOrderSelectValue()){
+      this.closeEmitter.emit({close:true, sortFilter: sortingFilter[0] });
+    }
   }
+
   onNotifyClosure(){
     this.closeEmitter.emit({close: true});
   }
@@ -128,7 +135,10 @@ export class FilterModalComponent implements OnInit {
   checkIfPriceFilterExists():boolean{
     return this.filtersToBeApplied['price'].hasOwnProperty('min') || this.filtersToBeApplied['price'].hasOwnProperty('max');
   }
+ checkOrderSelectValue(){
+    return this.orderSelectValue != 'Los más vendidos';
+  }
   showButton():boolean{
-    return this.selectValue != 'Los más vendidos' || this.filterExist() || this.checkIfPriceFilterExists();
+    return this.checkOrderSelectValue() || this.filterExist() || this.checkIfPriceFilterExists();
   }
 }

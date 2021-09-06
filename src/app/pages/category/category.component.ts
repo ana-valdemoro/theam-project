@@ -48,7 +48,17 @@ export class CategoryComponent implements OnInit, OnDestroy{
   }
   getNotificationOfClosure(response:any){
     if(response.close == true) this.isFilterModalOpen = false;
+    if (response.sortFilter != undefined && response.filter != undefined) this.getFilterAndSortProducts(response.filter, response.sortFilter) ;
+    if(response.filter != undefined) this.getFilterProduct(response.filter) ;
     if(response.sortFilter != undefined) this.getSortProducts(response.sortFilter);
+  }
+  getFilterAndSortProducts(filter: any, sortFilter: SortingFilter ) {
+    console.log(filter);
+    console.log(sortFilter)
+  }
+  getFilterProduct(filter: any) {
+    this.productsProvider.getProductsFiltered(this.currentCategory.categoryId, filter)
+    .then(products => {this.products = products});
   }
 
   getSortProducts(sortFilter: SortingFilter ){

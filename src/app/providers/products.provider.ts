@@ -20,6 +20,37 @@ export class ProductsProvider {
       return this.http.get<ProductAPIResponse>(link).toPromise();
   }
 
+  getProductsFiltered(categoryId:string, filters: any):Promise<ProductAPIResponse>{
+    let link = this.elaboratePath(categoryId, filters)
+    return this.http.get<ProductAPIResponse>(link).toPromise();
+  }
+  elaboratePath(categoryId:string, filters: any):string{
+    let link = this.route + "?category_id="+categoryId+'&';
+    for(let key in filters){
+      if(key != "price" && filters[key].length!=0){
+        link += this.elaborateSubFilterPath(key, filters[key]);
+      }else if(key == "price"){
+        link += this.elaboratePricePath(key, filters[key]);
+      }
+    }
+    let lastIndex = link.lastIndexOf('&');
+    if(lastIndex != -1 && lastIndex == link.length-1 ) link = link.substring(0,lastIndex);
+    return link;
+  }
+  elaboratePricePath(key:string, filter:any):string{
+    let filterRoute ="" ;
+    if(filter.hasOwnProperty('min')) filterRoute += `filters[price][min]=`+filter.min+'&';
+    if(filter.hasOwnProperty('max')) filterRoute+= `filters[price][max]=`+filter.max;
+    return filterRoute;
+  }
+  elaborateSubFilterPath(key:string, filter:any):string{
+    let filterRoute ="" ;
+    filter.forEach(id => {
+      filterRoute += `filters[${key}][]=`+id+'&'; 
+    });
+    return filterRoute;
+  }
+
   getProductByScanCode(sku:string): Promise<Product>{
     let link = "https://private-anon-3d7fb26c9f-gocco.apiary-mock.com/stores/1/products?scan_code="+sku;
     return this.http.get<Product>(link).toPromise();

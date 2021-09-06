@@ -9,7 +9,7 @@
         <div class="filter-body">
             <p>Ordenar por</p>
             <div class="select-element">
-                <select name="sorting-select" [(ngModel)]='selectValue'>
+                <select name="sorting-select" [(ngModel)]='orderSelectValue'>
                     <option *ngFor="let sortingFilter of sortingFilters " value="{{sortingFilter.name}}">{{sortingFilter.name}}</option>
                   </select>
             </div>
