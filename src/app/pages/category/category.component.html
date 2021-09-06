@@ -6,7 +6,7 @@
     </div>
     <div *ngIf="products" class="products">
         <div class="product-container" *ngFor="let product of products.results">
-            <img src="./../../../assets/images/boy.jpg">
+            <img src="./../../../assets/images/boy.jpg" (click)="onNavigateProductView(product.sku)">
             <a (click)="onNavigateProductView(product.sku)" > {{product.name}}</a>
             <div class="product-price">
                 <span>{{getPrice(product)}}</span>
