@@ -22,7 +22,6 @@ export class CategoriesProvider {
   }
 
   getSortingFilters(categoryId:string): Promise<SortingFilter[]>{
-    let route = "'https://private-anon-a0981503b5-gocco.apiary-mock.com/stores/{store_id}/categories/{category_id}/sortby');"
     return this.http.get<any>(this.route+ `/${categoryId}/sortby`).toPromise();
   }
 
