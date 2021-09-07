@@ -15,18 +15,16 @@ La estructura del proyecto se subdivide en las siguientes carpetas:
 •	Filtrar las categorias de productos  
 •	Navegar entre las diferentes páginas de la web.
 ## Requisitos no funcionales
-•	Angular  
-•	Cli de Angular  
+•	Angular   
+•	Angular CLI   
 •	Typescrip  
 •	CSS: flex, grid y custom-properties  
 •	Node.JS    
 •	Angular material    
 • Diseño adaptable a varias patanllas (responsive design)
 ## Instalación y ejecución
-
-Segundo, se debe instalar todas las dependencias del proyecto, por lo que ejecutamos:
-`npm install`
-Tercero, ejecutamos la instrucción `npm start` para iniciar el proyecto.
+**Primero**, se clona el repositorio al directorio donde queramos tener el proyecto con: `git clone https://github.com/ana-valdemoro/theam-project.git`  
+**Segundo**, se debe instalar todas las dependencias del proyecto, por lo que ejecutamos:`npm install`  
+**Tercero**, ejecutamos la instrucción `npm start` para iniciar el proyecto.
 ## Notas
 No se ha utilizado los endpoint: `countries`, `store` y `home`.
-
