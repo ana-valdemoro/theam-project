@@ -13,20 +13,20 @@ La estructura del proyecto se subdivide en las siguientes carpetas:
 ## Requisitos funcionales
 •	Visualizar las categorias de productos  
 •	Filtrar las categorias de productos  
-• Diseño adaptable a varias patanllas (responsive design)
+•	Navegar entre las diferentes páginas de la web.
 ## Requisitos no funcionales
 •	Angular  
 •	Cli de Angular  
 •	Typescrip  
 •	CSS: flex, grid y custom-properties  
 •	Node.JS    
-•	Angular material  
+•	Angular material    
+• Diseño adaptable a varias patanllas (responsive design)
 ## Instalación y ejecución
-Después de clonar el repositorio, se deberá instalar la CLI de Angular (sino se posee instalada con anterioridad): `npm install -g @ionic/cli` 
 
 Segundo, se debe instalar todas las dependencias del proyecto, por lo que ejecutamos:
 `npm install`
 Tercero, ejecutamos la instrucción `npm start` para iniciar el proyecto.
 ## Notas
-
+No se ha utilizado los endpoint: `countries`, `store` y `home`.
 
