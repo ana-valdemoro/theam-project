@@ -5,27 +5,37 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './pages/home/home.component';
-import { BabyComponent } from './pages/baby/baby.component';
-import { NewBornComponent } from './pages/new-born/new-born.component';
-import { ChildrenComponent } from './pages/children/children.component';
-import { JuniorComponent } from './pages/junior/junior.component';
-import { ErrorComponent } from './components/error/error.component';
+import { ErrorComponent } from './pages/error/error.component';
+import { CategoryComponent } from './pages/category/category.component';
+import { MobileNavItemComponent } from './components/mobile-nav-item/mobile-nav-item.component';
+import { ProductComponent } from './pages/product/product.component';
+import { FilterModalComponent } from './components/filter-modal/filter-modal.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import {MatSliderModule} from '@angular/material/slider';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     HomeComponent ,
-    BabyComponent,
-    NewBornComponent,
-    ChildrenComponent,
-    JuniorComponent,
-    ErrorComponent
+    ErrorComponent,
+    CategoryComponent,
+    MobileNavItemComponent,
+    ProductComponent,
+    FilterModalComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NoopAnimationsModule,
+    MatSliderModule,
+    FormsModule,
+    ReactiveFormsModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

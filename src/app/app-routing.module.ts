@@ -1,24 +1,22 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { NewBornComponent } from './pages/new-born/new-born.component';
+import { Routes, RouterModule , UrlSegment } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
-import { BabyComponent } from './pages/baby/baby.component';
-import { ChildrenComponent } from './pages/children/children.component';
-import { JuniorComponent } from './pages/junior/junior.component';
-import { ErrorComponent } from './components/error/error.component';
-import {categoryRoutes} from './models/category';
+import { ErrorComponent } from './pages/error/error.component';
+import { categoryRoutes } from './models/category';
+import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 
 
 const routes: Routes = [
   {path: "", component: HomeComponent},
   {path: "home", component: HomeComponent},
+  {path: "product_detail",component: ProductDetailComponent}
 ];
 categoryRoutes.forEach(element => {
   routes.push(element);
 });
 routes.push({path:"**",   component: ErrorComponent});
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

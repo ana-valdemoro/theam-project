@@ -6,15 +6,9 @@
     border-bottom: 1px solid rgba(245,77,40,.3);
     border-bottom-width: 2px;
     border-bottom-style: solid;
-    border-bottom-color: rgba(245, 77, 40, 0.9);
-    #title{
-        margin: 19px 19px  8px 19px;
-        font-size: 24px;
+    border-bottom-color: var(--base-color);
 
-    }
     .navbar{
-        //layout
-        display: flex;
         .navbar-menu{
             //layout
             display: flex;
@@ -22,15 +16,15 @@
             .navbar-menu-item{
                 //Spacing
                 margin-right: 30px;
+                a{
+                    color:black;
+                }
             }
             li{
                 //Layout
                 text-align: center;  
                 //Colors
                 color: #6D6F73;
-                //Others
-                list-style: none; 
-                
             }
             p{
                 //Size
@@ -43,14 +37,15 @@
             .menu-item-selected{
                 border-bottom: 2px solid #f52fcf;
             }
-            a:hover{
-                border-bottom: 1px solid rgba(245, 77, 40, 0.9);
+            .active-route,a:hover, a:focus{
+                border-bottom: 2px solid var(--base-color);
             }
+
         }
         .dropdown-container{
             //Location
             position:absolute;
-            top:58px;
+            top:53.5px;
             left: 0px;
             width: 100vw;
             display: flex;
@@ -74,8 +69,8 @@
                 //Spacing
                 padding: 0.8em 0.5em;
                 background-color:white;
-                a:hover{
-                    border-bottom: 1px solid rgba(245, 77, 40, 0.9);
+                a:hover, a:focus{
+                    border-bottom: 1px solid var(--base-color);
                 }
                     
             }
@@ -89,10 +84,48 @@
         //Spacing
         margin-right: 11px;
         .fa-map-marker-alt{
-            font-size: 30px;
+            font-size: 20px;
             text-align: center;
             //Spacing
             margin-bottom: 6px;
         }
     }
+}
+.logo{
+    display: flex;
+    align-items: center;
+
+    #title{
+        margin: 0px 8px;
+        font-size: 24px;
+    }
+}
+.fa-bars{
+    font-size: 20px;
+    margin: 4px;
+    cursor: pointer;
+}
+.fa-times{
+    font-size: 23px;
+    margin: 15px 7px;
+    cursor: pointer;
+    color:white;
+}
+
+.navbar-mobile-menu{
+    margin: 0;
+    background-color: rgb(245, 103, 71);
+    width: 100%;
+    height: 100vh;
+    transform: translateX(0);
+    padding: 0;
+
+}
+.navbar-mobile-container{
+    width: 100%;
+    height: 100vh;
+    background-color:  rgb(245, 103, 71);;
+    position: fixed;
+    overflow-y: auto;
+    
 }

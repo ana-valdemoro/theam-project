@@ -1,17 +1,30 @@
 <div class="header">
-    <a id="title" [routerLink]="['/home']">Magic Childhood</a>
-    <nav class="navbar">
-        <ul class="navbar-menu" >
+    <div class="logo">
+        <div *ngIf="isMobileSize" class="menu-mobile">
+            <i *ngIf="!isOpenMobileBar"class="fas fa-bars" (click)="isOpenMobileBar = true "></i>
+        </div>
+        <a id="title" [routerLink]="['/home']" (click)="saveCategoryState(null)">Magic Childhood</a>
+    </div>
+    <nav *ngIf="!isMobileSize" class="navbar" (mouseleave)="checkDropdownVisibility()">
+        <ul class="navbar-menu"  >
             <li *ngFor="let category of categories, let i = index" class="navbar-menu-item" (mouseover)="showSubCategories(i)"   >
-                <a [routerLink]="[category.route]">{{category.name}}</a>
+                <a [routerLink]="[category.route]" routerLinkActive="active-route"  (click)="saveCategoryState(category)" >{{category.name}}</a>
             </li>
-            <div *ngIf="currentCategory" class="dropdown-container" >
-                <ul class="dropdown-menu" (mouseleave)="categoryMouseOut()">
-                    <li *ngFor="let subCategory of currentCategory.children" class="dropdown-menu-item"><a [routerLink]="['?¿']">{{subCategory.name}}</a></li>
+            <div *ngIf="currentCategory" class="dropdown-container" (mouseover)="menuHover = true" >
+                <ul class="dropdown-menu" (mouseleave)=" menuHover = false">
+                    <li *ngFor="let subCategory of currentCategory.children" class="dropdown-menu-item">
+                        <a [routerLink]="[currentCategory.route +'/'+ subCategory.route]" (click)="saveCategoryState(subCategory)">{{subCategory.name}}</a>
+                    </li>
                 </ul>
             </div>
         </ul>
     </nav>
+        <div class="navbar-mobile-container" *ngIf="isMobileSize && isOpenMobileBar">
+            <i *ngIf="isOpenMobileBar" class="fas fa-times"  (click)="isOpenMobileBar = false "></i>
+            <ul  class="navbar-mobile-menu" >
+                <app-mobile-nav-item *ngFor="let category of categories" [Category]="category" (closeEmitter)="getNotificationOfClosure($event)"></app-mobile-nav-item>
+            </ul>
+        </div>    
     <div class="store-location">
         <i class="fas fa-map-marker-alt"></i>
         <span>España</span>
