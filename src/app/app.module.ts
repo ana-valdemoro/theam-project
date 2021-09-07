@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './pages/home/home.component';
-import { ErrorComponent } from './components/error/error.component';
+import { ErrorComponent } from './pages/error/error.component';
 import { CategoryComponent } from './pages/category/category.component';
 import { MobileNavItemComponent } from './components/mobile-nav-item/mobile-nav-item.component';
 import { ProductComponent } from './pages/product/product.component';
